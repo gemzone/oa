@@ -64,3 +64,22 @@ create table ClientDetails (
   additionalInformation VARCHAR(4096),
   autoApproveScopes VARCHAR(256)
 );
+
+
+
+
+
+
+CREATE TABLE [dbo].[auth](
+	[principal] [varchar](50) PRIMARY KEY,
+	[role] [varchar](10) NOT NULL
+);
+
+
+
+CREATE TABLE [dbo].[user](
+	[username] [varchar](50) PRIMARY KEY,
+	[password] [varchar](50) NOT NULL,
+	[enabled] [bit] NOT NULL DEFAULT(1)
+);
+

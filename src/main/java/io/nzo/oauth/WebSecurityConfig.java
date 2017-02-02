@@ -32,8 +32,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 	{
 		auth.jdbcAuthentication()                
 		    .dataSource(dataSource)
-		    .usersByUsernameQuery("SELECT username, [password], [enabled] FROM [dbo].[gz_user] WHERE username = ? ")             
-		    .authoritiesByUsernameQuery("SELECT [username] AS principal, [role] FROM [dbo].[gz_auth] WHERE username = ? ")                
+		    .usersByUsernameQuery("SELECT username, [password], [enabled] FROM [dbo].[user] WHERE username = ? ")             
+		    .authoritiesByUsernameQuery("SELECT principal, [role] FROM [dbo].[auth] WHERE principal = ? ")	// principal = username           
 		    .rolePrefix("ROLE_");	// ADMIN, USER, MANAGER
 		
 	}
@@ -42,7 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 	protected void configure(HttpSecurity http) throws Exception
 	{
 		// frameset 허용
-		http.headers().frameOptions().disable();
+		// http.headers().frameOptions().disable();
 
 		http.csrf().disable()
 		.anonymous()
